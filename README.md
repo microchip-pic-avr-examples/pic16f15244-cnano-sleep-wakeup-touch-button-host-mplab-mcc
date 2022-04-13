@@ -167,11 +167,11 @@ Timer2 is required for the ATQT7-XPRO scanning as well as for the waking it up a
 ## Pin Configuration
 
 <p align="center">
-  <img width=600 height=auto src="images/timer2_config_client.png">
+  <img width=600 height=auto src="images/pin_manager_config.png">
   <br>Figure 10: Pin Configuration - Host <br>
 </p>
 
 <p align="center">
-  <img width=600 height=auto src="images/timer2_config_client.png">
+  <img width=600 height=auto src="images/pin_manager_config_client.png">
   <br>Figure 11: Pin Configuration - Client <br>
 </p>
