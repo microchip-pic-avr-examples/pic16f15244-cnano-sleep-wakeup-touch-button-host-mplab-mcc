@@ -8,7 +8,7 @@
 
 The modern electronic devices have been equipped with intuitive capacitive touch interface for the users to interact with and operate these devices, as the touch interface is durable, flexible to design, aesthetically appealing and offers a pleasurable experience to the users. For example; the white goods that is home appliances such as cooktops, coffee makers, washing machines, tumble driers, dishwashers, refrigerators, freezers, microwave ovens, and water purifiers etc. These devices are designed in such a way that they go into standby mode when the device is not used for some time. Thereby, average power consumption of the device will be minimum. Such devices require sleep wake-up functionality to bring the device into active mode whenever a user activity is reported on it. These devices also require periodic self-test mechanism for verifying the tasks such as proper functioning of the system, working of various sensors interfaced to it, keep tracking of inventory availability, etc. depending on the type of device.
 
-Refer code example [Sleep Wake Up Touch Button Client Implementation using PIC16F15244 Microcontroller](https://github.com/microchip-pic-avr-examples/pic16f15244-cnano-sleep-wakeup-touch-button-client-mplab-mcc.git) for more details about the client device implementation.
+Refer code example [Sleep Wake Up Touch Button Implementation using PIC16F15244 Microcontroller](https://github.com/microchip-pic-avr-examples/pic16f15244-cnano-sleep-wakeup-touch-button-client-mplab-mcc.git) for more details about the client device implementation.
 
 This code example demonstrates usage of PIC16F15244 microcontroller as client device in a system where it generates a trigger pulse through GPIO to wake-up the host microcontroller from sleep. Also, the code example has got provision to dynamically configure the system sleep period through UART interface. The client device generates trigger pulse either to a valid finger touch event on the configured touch button or to wake-up the host microcontroller from sleep when sleep period is elapsed.
 
@@ -55,7 +55,7 @@ The mTouch™ library running on client microcontroller periodically scan the co
 
 This example is supplemented with two standalone firmware named as host firmware, client firmware.
 
-The host firmware communicates with the client firmware using EUSART and informs the sleep duration. After confirming if the transmission is completed, it enters Sleep mode. As and when the host device receives the wake up pulse from client, it wakes-up from the sleep mode, performs the activities and again enters sleep mode.
+The host firmware communicates with the client firmware using EUSART and informs the sleep duration (15seconds is considered here for demo purpose). After confirming if the transmission is completed, it enters Sleep mode. As and when the host device receives the wake up pulse from client, it wakes-up from the sleep mode, performs the activities and again enters sleep mode.
 
 The client firmware used timer 1 for scanning touch button, periodic reset, and active period flags. It is mainly divided into three sections. First section comprises of periodically scanning capacitive touch button using mTouch™ library for detecting valid finger touch events reported on it. In the second section, the client generates a trigger pulse (to host device) to a valid finger touch event for waking it up from sleep. Last section consists of monitoring sleep period of the host that is received from host through UART interface received via EUSART from the host device. It sets up the periodic reset flag and monitors it for the specified duration. As and when the time is elapsed, it sends the wake-up signal to the host device.
 
@@ -103,9 +103,9 @@ The host Tx-Rx Pins connected to Client Rx-Tx pins, along with the pulse signal 
 * Connect the hardware as shown in the Hardware Setup section . Power up the host and client boards using micro USB cable. 
 * Load the host application firmware to the PIC18F47Q10 Curiosity Nano board which is connected to the client device through EUSART and GPIO interface.
 * Load the client application firmware to the PIC16F15244 Curiosity Nano board interfaced with the QT7 Xplained Pro.
-* On powering on, host MCU sends the periodic reset time and enters the sleep mode.
-* The client check for user touch, if touch is detected sends the wake-up pulse to the host device and enters sleep mode.
+* On powering on, host MCU sends the periodic reset time to the client device over UART and enters the sleep mode.
 * If the periodic wake-up period is elapsed, then client sends a wake-up signal to the host device.
+* In addition to it, the client checks for user touch, if touch is detected sends the wake-up pulse to the host device and enters sleep mode.
 
 ## Conclusion
 
