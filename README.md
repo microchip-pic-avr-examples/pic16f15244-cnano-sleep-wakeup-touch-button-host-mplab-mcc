@@ -2,7 +2,7 @@
 
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Sleep Wake-Up Touch Button Host Implementation using PIC16F15244 Microcontroller
+# Sleep Wake-Up Touch Button: Host Emulation using PIC18F47Q10 Microcontroller
 
 ## Introduction
 
